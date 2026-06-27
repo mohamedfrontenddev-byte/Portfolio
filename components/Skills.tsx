@@ -19,7 +19,7 @@ import {
   Monitor,
 
 } from 'lucide-react';
-import { DiMaterializecss } from 'react-icons/di';
+import { SiMui } from 'react-icons/si';
 
 const skillCategories = [
   {
@@ -44,7 +44,7 @@ const skillCategories = [
       { name: 'GitHub', icon: Github, color: 'text-gray-800 dark:text-white' },
       { name: 'Vercel', icon: Rocket, color: 'text-black dark:text-white' },
       { name: 'Figma', icon: Figma, color: 'text-purple-500' },
-       { name: 'Material UI', icon: Monitor, color: 'text-orange-600' },
+       { name: 'Material UI', icon: SiMui, color: 'text-orange-600' },
     ],
   },
   {
