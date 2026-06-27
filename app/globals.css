@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    @apply antialiased;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/70 dark:bg-dark-surface/70 backdrop-blur-xl border border-white/20 dark:border-dark-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-white/80 dark:bg-dark-card/80 backdrop-blur-2xl border border-white/30 dark:border-dark-border/60;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 via-purple-600 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .gradient-text-dark {
+    @apply bg-gradient-to-r from-primary-400 via-purple-400 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl bg-gradient-to-r from-primary-600 to-purple-600 text-white font-medium
+           hover:from-primary-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-primary-500/25
+           hover:shadow-primary-500/40 hover:-translate-y-0.5;
+  }
+
+  .btn-outline {
+    @apply px-6 py-3 rounded-xl border-2 border-primary-500/30 dark:border-primary-400/30 text-primary-700 dark:text-primary-300 font-medium
+           hover:bg-primary-500/10 hover:border-primary-500/50 transition-all duration-300
+           hover:-translate-y-0.5;
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
