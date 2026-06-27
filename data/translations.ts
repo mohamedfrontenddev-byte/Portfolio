@@ -52,7 +52,7 @@ export const projects: Project[] = [
     'A modern property listing platform with advanced search, filters, and interactive map integration.',
   descriptionAr:
     'منصة حديثة لإدراج العقارات مع بحث متقدم وفلاتر وتكامل خريطة تفاعلية.',
-  image: '/projectManageme.png',
+  image: '/ProjectManageme.png',
   technologies: [
     'Next.js',
     'React',
