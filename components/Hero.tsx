@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { motion } from 'framer-motion';
 import { ArrowDown, ExternalLink, FileText, Sparkles } from 'lucide-react';
@@ -8,66 +7,11 @@ import Image from 'next/image';
 
 export default function Hero() {
   const { t } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = container.getBoundingClientRect();
-      setMousePos({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top,
-      });
-    };
-
-    const handleMouseEnter = () => setIsHovering(true);
-    const handleMouseLeave = () => setIsHovering(false);
-
-    container.addEventListener('mousemove', handleMouseMove);
-    container.addEventListener('mouseenter', handleMouseEnter);
-    container.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      container.removeEventListener('mousemove', handleMouseMove);
-      container.removeEventListener('mouseenter', handleMouseEnter);
-      container.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
 
   return (
     <section
-      ref={containerRef}
-      className="relative min-h-[150dvh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-dark-bg dark:via-dark-bg dark:to-dark-card"
+      className="relative min-h-[150dvh] flex items-center justify-center overflow-hidden"
     >
-      {/* Mouse Glow Effect */}
-      <div
-        className="pointer-events-none absolute transition-opacity duration-300"
-        style={{
-          opacity: isHovering ? 1 : 0,
-          left: mousePos.x - 100,
-          top: mousePos.y - 100,
-          width: 200,
-          height: 200,
-          background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(147,51,234,0.08) 50%, transparent 70%)',
-          filter: 'blur(20px)',
-          transform: 'translate(0,0)',
-        }}
-      />
-
-      {/* Background Gradient Orbs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-primary-400/20 dark:bg-primary-500/10 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-400/20 dark:bg-purple-500/10 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r from-primary-500/5 to-purple-500/5 rounded-full blur-3xl" />
-      </div>
-
-      {/* Grid Pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.03)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none" />
-
       <div className="relative z-10 max-w-7xl mx-auto section-padding w-full">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
           {/* Text Content */}

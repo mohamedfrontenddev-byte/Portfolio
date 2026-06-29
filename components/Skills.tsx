@@ -62,7 +62,7 @@ export default function Skills() {
   const { language, t } = useLanguage();
 
   return (
-    <section id="skills" className="py-24 lg:py-32 relative bg-gray-50/50 dark:bg-dark-card/50">
+    <section id="skills" className="py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto section-padding">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

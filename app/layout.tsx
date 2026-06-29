@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { LanguageProvider } from '@/components/LanguageProvider';
+import GlobalBackground from '@/components/GlobalBackground';
+import MouseGlow from '@/components/MouseGlow';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -31,7 +33,11 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans`}>
         <ThemeProvider>
           <LanguageProvider>
-            {children}
+            <GlobalBackground />
+            <div className="relative z-10">
+              <MouseGlow />
+              {children}
+            </div>
           </LanguageProvider>
         </ThemeProvider>
       </body>

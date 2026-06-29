@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 lg:py-32 relative bg-gray-50/50 dark:bg-dark-card/50">
+    <section id="contact" className="py-24 lg:py-32 relative">
       <div className="max-w-7xl mx-auto section-padding">
 
         <motion.div

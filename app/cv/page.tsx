@@ -4,8 +4,17 @@ import { motion } from 'framer-motion';
 import { Download, Mail, Phone, MapPin, Globe, Github } from 'lucide-react';
 
 export default function CVPage() {
+  const handlePrint = () => {
+    if (typeof window === 'undefined') return;
+
+    window.focus();
+    setTimeout(() => {
+      window.print();
+    }, 100);
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-dark-bg py-12 px-4">
+    <div className="min-h-screen py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Download Button */}
         <motion.div
@@ -14,7 +23,9 @@ export default function CVPage() {
           className="flex justify-end mb-6"
         >
           <button
-            onClick={() => window.print()}
+            type="button"
+            onClick={handlePrint}
+            title="Print CV"
             className="btn-primary flex items-center gap-2"
           >
             <Download className="w-4 h-4" />
