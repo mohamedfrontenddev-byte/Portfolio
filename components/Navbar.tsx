@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from 'next-themes';
 import { useLanguage } from '@/hooks/useLanguage';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   Sun,
   Moon,
@@ -32,11 +32,26 @@ export default function Navbar() {
   useEffect(() => {
     setMounted(true);
     const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileOpen(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   if (!mounted) return null;
+
+  const toggleMobileMenu = () => {
+    setMobileOpen((prev) => !prev);
+  };
 
   return (
     <motion.nav
@@ -109,8 +124,11 @@ export default function Navbar() {
 
           {/* Mobile Menu */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors"
+            type="button"
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+            onClick={toggleMobileMenu}
+            className="md:hidden relative z-[60] p-2.5 rounded-xl hover:bg-gray-100 dark:hover:bg-dark-surface transition-colors"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -118,36 +136,37 @@ export default function Navbar() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-strong border-t border-gray-200 dark:border-dark-border"
-          >
-            <div className="px-4 py-4 space-y-2">
-              {navLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="block px-4 py-3 rounded-xl text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface transition-colors font-medium"
-                >
-                  {t(link.key)}
-                </a>
-              ))}
+      {mobileOpen && (
+        <motion.div
+          id="mobile-menu"
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+          className="md:hidden relative z-[60] glass-strong border-t border-gray-200 dark:border-dark-border overflow-hidden"
+        >
+          <div className="px-4 py-4 space-y-2">
+            {navLinks.map((link) => (
               <a
-                href="/cv/"
-                className="block px-4 py-3 rounded-xl text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-dark-surface transition-colors font-medium flex items-center gap-2"
+                key={link.href}
+                href={link.href}
+                onClick={() => setMobileOpen(false)}
+                className="block px-4 py-3 rounded-xl text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-dark-surface transition-colors font-medium"
               >
-                <FileText className="w-4 h-4" />
-                {t('nav.cv')}
+                {t(link.key)}
               </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+            <a
+              href="/cv/"
+              onClick={() => setMobileOpen(false)}
+              className="px-4 py-3 rounded-xl text-primary-600 dark:text-primary-400 hover:bg-primary-50 dark:hover:bg-dark-surface transition-colors font-medium flex items-center gap-2"
+            >
+              <FileText className="w-4 h-4" />
+              {t('nav.cv')}
+            </a>
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 }
