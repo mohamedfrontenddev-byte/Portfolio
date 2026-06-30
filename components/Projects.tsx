@@ -81,6 +81,8 @@ export default function Projects() {
                 <div className="flex gap-3">
                   <a
                     href={project.liveDemo}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-primary-600 text-white text-sm font-medium hover:bg-primary-700 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
@@ -88,6 +90,8 @@ export default function Projects() {
                   </a>
                   <a
                     href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-gray-200 dark:border-dark-border text-gray-700 dark:text-gray-300 text-sm font-medium hover:bg-gray-50 dark:hover:bg-dark-surface transition-colors"
                   >
                     <Github className="w-4 h-4" />
