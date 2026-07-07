@@ -60,7 +60,7 @@ export const projects: Project[] = [
     'Bootstrap',
     'API Integration'
   ],
-  liveDemo: 'https://smart-project-dashboard.vercel.app',
+  liveDemo: 'https://smart-project-dashboard-system.vercel.app',
   github: 'https://github.com/mohamedfrontenddev-byte/SmartProjectDashboard',
 },
  {

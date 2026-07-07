@@ -13,7 +13,7 @@ const socialLinks = [
   },
   {
     icon: Linkedin,
-    href: 'https://linkedin.com/in/mohamed-allam',
+    href: 'https://www.linkedin.com/in/mohamedfrontenddevdev',
     label: 'LinkedIn',
   },
 ];
