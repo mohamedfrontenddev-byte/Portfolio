@@ -70,4 +70,19 @@ export const projects: Project[] = [
     liveDemo: 'https://stock-sync-tau.vercel.app',
     github: 'https://github.com/mohamedfrontenddev-byte/StockSync',
   },
+   {
+    id: 3,
+    title: 'restaurant',
+    titleAr: 'نظام إدارة المطاعم',
+    description:
+      'A restaurant management system for managing orders, inventory, and staff.',
+    descriptionAr:
+      'نظام إدارة المطاعم يسمح بإدارة الطلبات والمخزون وضوابط الموظفين',
+    image: '/restaurant.png',
+    technologies: ['React', 'JavaScript', 'Tailwind CSS', 'Redux'],
+    liveDemo: 'https://restaurant-management-dashboard-esj.vercel.app',
+    github: 'https://github.com/mohamedfrontenddev-byte/Restaurant-Management-Dashboard.git',
+    
+  }, 
+
 ];
