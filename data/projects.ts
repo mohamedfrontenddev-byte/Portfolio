@@ -84,5 +84,25 @@ export const projects: Project[] = [
     github: 'https://github.com/mohamedfrontenddev-byte/Restaurant-Management-Dashboard.git',
     
   }, 
+  {
+  id: 5,
+  title: "BookMed",
+  titleAr: "موقع لحجز مواعيد الأطباء وإدارة العيادات",
+  description:
+    "A modern clinic management and appointment booking platform that allows patients to book appointments, simulate online payments, and manage bookings, while providing doctors and administrators with dedicated dashboards and analytics.",
+  descriptionAr:
+    "منصة حديثة لإدارة العيادات وحجز مواعيد الأطباء، تتيح للمرضى حجز المواعيد وإتمام عملية دفع وهمية وإدارة الحجوزات، مع لوحات تحكم مخصصة للأطباء والإدارة لمتابعة المرضى والمواعيد والإحصائيات.",
+  image: "/BookMed.png",
+  technologies: [
+    "Next.js",
+    "TypeScript",
+    "Tailwind CSS",
+    "shadcn/ui",
+    "Clerk",
+    "Zustand",
+  ],
+  liveDemo: "https://book-med.vercel.app",
+  github: "https://github.com/mohamedfrontenddev-byte/BookMed",
+},
 
 ];
